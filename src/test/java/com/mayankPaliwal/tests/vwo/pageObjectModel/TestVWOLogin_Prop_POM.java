@@ -13,7 +13,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class TestVWOLogin_Prop_POM extends CommonToAllTest {
 
@@ -25,10 +29,14 @@ public class TestVWOLogin_Prop_POM extends CommonToAllTest {
 
     // V  - Assertions
 
+    private static final Logger logger = LogManager.getLogger(TestVWOLogin_Prop_POM.class);
+
     @Owner("Mayank Paliwal")
     @Description("Verify that with the invalid credentials and verifying the error message")
     @Test
     public void test_login_negative_vwo() {
+
+        logger.info("This is starting of the test case login woth negative ");
 
         // Driver manager code  --- > D
 
@@ -38,6 +46,7 @@ public class TestVWOLogin_Prop_POM extends CommonToAllTest {
 
         // Assertions  --->  V
 
+        logger.info("This is assertions for invalid creds");
         assertThat(err_msg).isNotEmpty().isNotNull().isNotBlank();
         Assert.assertEquals(err_msg, PropertiesReader.readKey("error_msg"));
 
@@ -52,6 +61,7 @@ public class TestVWOLogin_Prop_POM extends CommonToAllTest {
     public void test_login_positive_vwo() {
         // Driver manager code  --- > D
 
+        logger.info("This is starting of login with valid creds");
         try {
             // Page class code [POM code ]  ---> L
             LoginPage loginPage = new LoginPage(DriverManager.getDriver());
@@ -75,11 +85,12 @@ public class TestVWOLogin_Prop_POM extends CommonToAllTest {
     @Test
     public void test_Free_Trial_page() {
 
+        logger.info("This is trial page ");
 
         FreetrialPage freeTrialPage = new FreetrialPage(DriverManager.getDriver());
         String err = freeTrialPage.trialPageEnterDetailsInvalid(PropertiesReader.readKey("username"));
 
-
+        logger.info("This is trial page Assertions ");
         assertThat(err).isNotEmpty().isNotNull().isNotBlank();
         Assert.assertEquals(err, PropertiesReader.readKey("trailPage_err"));
 
