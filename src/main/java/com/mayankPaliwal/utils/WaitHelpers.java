@@ -65,4 +65,10 @@ public class WaitHelpers {
         });
     }
 
+
+
+    public static void waitForNumberOfWindows(WebDriver driver, int expectedWindows) {
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(driver1 -> driver.getWindowHandles().size()==expectedWindows);
+    }
+
 }
