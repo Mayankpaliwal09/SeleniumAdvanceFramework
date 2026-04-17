@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="D:/TESTING ACADEMY/JAVA-QUES/SeleniumAdvanceFramework">
         <classes>
-            <class name="com.mayankPaliwal.tests.vwo.pageObjectModel.TestVWOLogin_Normal_POM">
+            <class name="com.mayankPaliwal.tests.vwo.pageObjectModelTC.TestVWOLogin_Normal_POM">
                 <methods>
                     <include name="test_login_negative_vwo"/>
                     <include name="test_login_positive_vwo"/>
@@ -11,7 +11,7 @@
                 </methods>
             </class>
 
-<!--            <class name="com.mayankPaliwal.tests.vwo.pageObjectModel.TestFreeTrialPage_Normal_POM">-->
+<!--            <class name="com.mayankPaliwal.tests.vwo.pageObjectModelTC.TestFreeTrialPage_Normal_POM">-->
 <!--                <methods>-->
 <!--                    <include name="test_Free_Trial_page"/>-->
 <!--                </methods>-->

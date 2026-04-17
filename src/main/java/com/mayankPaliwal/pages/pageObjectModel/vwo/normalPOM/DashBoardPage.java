@@ -1,7 +1,6 @@
-package com.mayankPaliwal.pages.pageObjectModel.vwo;
+package com.mayankPaliwal.pages.pageObjectModel.vwo.normalPOM;
 
 import com.mayankPaliwal.utils.WaitHelpers;
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

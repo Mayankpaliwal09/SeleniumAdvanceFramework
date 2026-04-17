@@ -1,25 +1,23 @@
-package com.mayankPaliwal.tests.vwo.pageObjectModel;
+package com.mayankPaliwal.tests.vwo.pageObjectModelTC;
 
 import com.mayankPaliwal.base.CommonToAllTest;
 import com.mayankPaliwal.driver.DriverManager;
-import com.mayankPaliwal.pages.pageObjectModel.vwo.DashBoardPage;
-import com.mayankPaliwal.pages.pageObjectModel.vwo.FreetrialPage;
-import com.mayankPaliwal.pages.pageObjectModel.vwo.LoginPage;
+import com.mayankPaliwal.listeners.RetryAnalyzer;
+import com.mayankPaliwal.pages.pageObjectModel.vwo.improvedPOM.DashBoardPage;
+import com.mayankPaliwal.pages.pageObjectModel.vwo.improvedPOM.LoginPage;
 import com.mayankPaliwal.utils.PropertiesReader;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-public class TestVWOLogin_Prop_POM extends CommonToAllTest {
+@Test(retryAnalyzer = RetryAnalyzer.class)
+public class TestVWOLogin_Prop_improvedRetryListner_POM extends CommonToAllTest {
 
 
     //  D
@@ -29,7 +27,7 @@ public class TestVWOLogin_Prop_POM extends CommonToAllTest {
 
     // V  - Assertions
 
-    private static final Logger logger = LogManager.getLogger(TestVWOLogin_Prop_POM.class);
+    private static final Logger logger = LogManager.getLogger(TestVWOLogin_Prop_improvedRetryListner_POM.class);
 
     @Owner("Mayank Paliwal")
     @Description("Verify that with the invalid credentials and verifying the error message")
@@ -42,13 +40,13 @@ public class TestVWOLogin_Prop_POM extends CommonToAllTest {
 
         // Page class code [POM code ]  ---> L
         LoginPage loginPage = new LoginPage(DriverManager.getDriver());
-        String err_msg = loginPage.loginWithInvalidCreds(PropertiesReader.readKey("invalid_username"), PropertiesReader.readKey("invalid_password"));
+        String err_msg = loginPage.login_with_Invalid_creds(PropertiesReader.readKey("invalid_username"), PropertiesReader.readKey("invalid_password"));
 
         // Assertions  --->  V
 
         logger.info("This is assertions for invalid creds");
         assertThat(err_msg).isNotEmpty().isNotNull().isNotBlank();
-        Assert.assertEquals(err_msg, PropertiesReader.readKey("error_msg"));
+        Assert.assertEquals(err_msg, PropertiesReader.readKey("abc"));
 
 
 
@@ -65,7 +63,7 @@ public class TestVWOLogin_Prop_POM extends CommonToAllTest {
         try {
             // Page class code [POM code ]  ---> L
             LoginPage loginPage = new LoginPage(DriverManager.getDriver());
-            loginPage.loginWithValidCreds(PropertiesReader.readKey("username"), PropertiesReader.readKey("password"));
+            loginPage.login_with_valid_creds(PropertiesReader.readKey("username"), PropertiesReader.readKey("password"));
             DashBoardPage dashBoardPage = new DashBoardPage(DriverManager.getDriver());
             String username = dashBoardPage.loggedInUserName();
 
@@ -80,21 +78,21 @@ public class TestVWOLogin_Prop_POM extends CommonToAllTest {
     }
 
 
-    @Owner("Mayank Paliwal")
-    @Description("Verify that with the invalid credentials and verifying the error message")
-    @Test
-    public void test_Free_Trial_page() {
-
-        logger.info("This is trial page ");
-
-        FreetrialPage freeTrialPage = new FreetrialPage(DriverManager.getDriver());
-        String err = freeTrialPage.trialPageEnterDetailsInvalid(PropertiesReader.readKey("username"));
-
-        logger.info("This is trial page Assertions ");
-        assertThat(err).isNotEmpty().isNotNull().isNotBlank();
-        Assert.assertEquals(err, PropertiesReader.readKey("trailPage_err"));
-
-
-    }
+//    @Owner("Mayank Paliwal")
+//    @Description("Verify that with the invalid credentials and verifying the error message")
+//    @Test
+//    public void test_Free_Trial_page() {
+//
+//        logger.info("This is trial page ");
+//
+//        FreetrialPage freeTrialPage = new FreetrialPage(DriverManager.getDriver());
+//        String err = freeTrialPage.trialPageEnterDetailsInvalid(PropertiesReader.readKey("username"));
+//
+//        logger.info("This is trial page Assertions ");
+//        assertThat(err).isNotEmpty().isNotNull().isNotBlank();
+//        Assert.assertEquals(err, PropertiesReader.readKey("trailPage_err"));
+//
+//
+//    }
 
 }

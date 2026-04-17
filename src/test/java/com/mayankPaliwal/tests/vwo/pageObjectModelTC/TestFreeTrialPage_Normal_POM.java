@@ -1,6 +1,6 @@
-package com.mayankPaliwal.tests.vwo.pageObjectModel;
+package com.mayankPaliwal.tests.vwo.pageObjectModelTC;
 
-import com.mayankPaliwal.pages.pageObjectModel.vwo.FreetrialPage;
+import com.mayankPaliwal.pages.pageObjectModel.vwo.normalPOM.FreetrialPage;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.openqa.selenium.WebDriver;

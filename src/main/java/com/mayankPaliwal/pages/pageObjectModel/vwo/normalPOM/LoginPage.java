@@ -1,4 +1,4 @@
-package com.mayankPaliwal.pages.pageObjectModel.vwo;
+package com.mayankPaliwal.pages.pageObjectModel.vwo.normalPOM;
 
 import com.mayankPaliwal.utils.PropertiesReader;
 import com.mayankPaliwal.utils.WaitHelpers;

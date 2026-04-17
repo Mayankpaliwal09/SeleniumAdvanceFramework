@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class UtilExcel {
+public class UtilExcel  {
 
 
     public static String SHEET_PATH = System.getProperty("user.dir")+"/src/test/resources/TestData.xlsx";
@@ -16,13 +16,17 @@ public class UtilExcel {
     static Sheet sheet;
 
 
-    public Object[][] getDataFromExcel(String sheet_Name){
+    public static Object[][] getDataFromExcel(String sheet_Name){
 
         FileInputStream file ;
         try{
 
             file = new FileInputStream(SHEET_PATH);
             book = WorkbookFactory.create(file);
+
+            for (int i = 0; i < book.getNumberOfSheets(); i++) {
+                System.out.println("Available sheet: [" + book.getSheetName(i) + "]");
+            }
             sheet = book.getSheet(sheet_Name);
 
             if(sheet == null){
@@ -30,6 +34,7 @@ public class UtilExcel {
             }
         } catch (IOException e) {
             System.out.println("File not found !!");
+            e.printStackTrace();
         }
 
         Object[][] data = new Object[sheet.getLastRowNum()][sheet.getRow(0).getLastCellNum()];
